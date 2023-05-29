@@ -1,0 +1,334 @@
+def pair_vuln_team():
+	vulns = get_vuln_details()
+	priorities = get_priority_rules()
+	count = 0
+
+# vulns ->   0 Scan-Id   *** 1 IP Address ** 2 Title *** 3 Severity *** 4 App Name
+# priorities -> 0 Team *** 1 Assignee *** 2 IP Addr(s) *** 3 Title ** 4 Priority ** 5 App Name ** 6 reason msg  ** 7 rule
+	for v in vulns:
+		for p in priorities:
+			if p[7] == "TITLE-ONLY": # TITLE ONLY RULE
+				pri_titles = str(p[3]).split(',')
+				for ptitle in pri_titles:
+					if re.match(ptitle,v[2]): # TITLE MATCHES
+						if p[4] == '1':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '2':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+
+						elif p[4] == '3':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+
+						elif p[4] == '4':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '5':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+			
+			elif p[7] == "APPNAME-TITLE": # TITLE AND APP NAME RULE
+				pri_app_names = str(p[5]).split(',')
+				pri_titles = str(p[3]).split(',')
+				for ptitle in pri_titles:
+					if re.match(ptitle,v[2]): # TITLE MATCHES
+						for papp in pri_app_names:
+							if re.match(v[4],papp): # APP NAME MATCHES
+								if p[4] == '1':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '2':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+
+								elif p[4] == '3':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '4':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '5':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+			
+
+			elif p[7] == "IP-TITLE": # IP AND TITLE RULE
+				pri_ips = str(p[2]).split(',')
+				pri_titles = str(p[3]).split(',')
+				for pip in pri_ips:
+					if re.match(v[1],pip):
+						for ptitle in pri_titles:
+							if re.match(v[2],ptitle): # TITLE MATCHES
+								if p[4] == '1':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '2':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								
+								elif p[4] == '3':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '4':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[4] == '5':
+									if p[0] == 'eChannels\\QA\\Implementation':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Infra':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\DBA':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\V-Channels\\CCare':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+									elif p[0] == 'eChannels\\QA\\Security':
+										vuln_team_query(p[0],p[6],v[0],p[1])
+					
+
+
+			elif p[7] == "APPNAME-ONLY": # APP NAME ONLY RULE
+				pri_app_names = str(p[5]).split(',')
+				for papp in pri_app_names:
+					if re.match(v[4],papp): # APP NAME MATCHES
+						print(v[0])
+						if p[4] == '1':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '2':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+
+							elif p[4] == '3':
+								if p[0] == 'eChannels\\QA\\Implementation':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Infra':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\DBA':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\V-Channels\\CCare':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Security':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[4] == '4':
+								if p[0] == 'eChannels\\QA\\Implementation':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Infra':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\DBA':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\V-Channels\\CCare':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Security':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[4] == '5':
+								if p[0] == 'eChannels\\QA\\Implementation':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Infra':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\DBA':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\V-Channels\\CCare':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+								elif p[0] == 'eChannels\\QA\\Security':
+									vuln_team_query(p[0],p[6],v[0],p[1])
+
+			elif p[7] == "IP-ONLY":
+				pri_ips = str(p[2]).split(',')
+				for pip in pri_ips:
+					if re.match(v[1],pip):
+						if p[4] == '1':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '2':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '3':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '4':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+						elif p[4] == '5':
+							if p[0] == 'eChannels\\QA\\Implementation':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Infra':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\DBA':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\V-Channels\\CCare':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+							elif p[0] == 'eChannels\\QA\\Security':
+								vuln_team_query(p[0],p[6],v[0],p[1])
+
+
+
+def vuln_team_query(assigned_team,roa,scan_id,assignee):
+	sql = """UPDATE vulns SET assigned_team=:bind_assigned_team,roa=:bind_roa,assignee=:bind_assignee WHERE scan_id=:bind_scanid"""
+	cur.execute(sql,bind_assigned_team=assigned_team,bind_roa=roa,bind_scanid=scan_id,bind_assignee=assignee)
+
+	sql = """UPDATE fixed_vulns SET assigned_team=:bind_assigned_team,roa=:bind_roa,assignee=:bind_assignee WHERE scan_id=:bind_scanid"""
+	cur.execute(sql,bind_assigned_team=assigned_team,bind_roa=roa,bind_scanid=scan_id,bind_assignee=assignee)
+
+	conn.commit()
